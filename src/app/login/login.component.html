@@ -1,0 +1,44 @@
+<div class="login-container">
+    <div class="login-form">
+        <div class="login-form-inner">
+            <div class="logo">
+                          </div>
+            <h1>Inicia Sesión</h1>
+            <!-- <p class="body-text">Te damos la bienvenida a MTB Pelicano</p> -->
+            <form [formGroup]="LoginForm" (ngSubmit)="ingresar()">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Usuario</label>
+                    <input type="text" formControlName="usuario" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder="">
+                </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Clave</label>
+                <input type="password" formControlName="clave" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="">
+            </div>
+            <!-- <button class="btn-success login-cta" [disabled]="LoginForm.invalid">Registrar</button> -->
+             <!-- <button class="rounded-button login-cta" input="">Ingresar</button> -->
+
+             <button type="submit" class="rounded-button login-cta" [disabled]="LoginForm.invalid">Registrar</button>
+            </form>
+            <div class="registrarme" [routerLink]="['/newuser']">¡Soy usuario nuevo!</div>
+        </div>
+    </div>
+    <div class="onboarding">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide color-1">
+                    <div class="slide-image">
+                        <img src="http://pngimg.com/uploads/cycling/cycling_PNG67.png" loading="lazy" alt="" />
+                    </div>
+                    <div class="slide-content">
+                        <h2>MTB pelicano </h2>
+                        <br><br>
+                        <div class="repequeno">
+                           Ciclomontañismo Premium
+                        </div>
+                    </div>
+                </div>                
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>

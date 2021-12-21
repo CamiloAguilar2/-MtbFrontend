@@ -1,0 +1,43 @@
+
+
+<div class="container formulario">
+    <h1>Nuevo usuario</h1>
+<form [formGroup]="RegisterForm" (ngSubmit)="addUser()">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Identificación</label>
+        <input type="number" formControlName="nidentification" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nombres</label>
+        <input type="text" formControlName="names" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Apellidos</label>
+        <input type="text" formControlName="last_name" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" placeholder="">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Teléfono</label>
+        <input type="number" formControlName="telefono" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" placeholder="">
+            <!-- <small  class="text-danger"  *ngIf="RegisterForm.get('telefono').errors.required">El número de teléfono es requerido.</small>   -->
+            <!-- <small  class="text-danger"  *ngIf="RegisterForm.get('telefono').errors.pattern">Please, Enter 10 digit Mobile Number.</small>  -->
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Correo electrónico</label>
+        <input type="text" formControlName="email" [class.is-invalid] = "RegisterForm.get('email').invalid && RegisterForm.get('email').touched" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" placeholder="ejemplo@mail.com">
+            <small class="text-danger" *ngIf="RegisterForm.get('email').errors?.email">La dirección de correo no es válida</small> 
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Contraseña</label>
+        <input type="text" formControlName="password" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" placeholder="">
+    </div>
+    <button class="btn-success login-cta" [disabled]="RegisterForm.invalid">Registrar</button>
+</form>
+
+</div>

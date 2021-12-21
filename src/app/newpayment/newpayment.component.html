@@ -1,0 +1,47 @@
+<div class="container formulario">
+    <button class="personalizado" [routerLink]="['/payment']">Regresar</button>
+    <h1>Nuevo Pago</h1>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <input type="number" class="form-control" placeholder="identificación del cliente"
+                    [(ngModel)]="busqueda">
+            </div>
+        </div>
+        <div class="col"><button class="btn btn-sm btn-success miboton" (click)="buscar_usuario()"><i
+                    class="fa fa-search" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="usuario_encontrado" *ngIf="mostrar_formulario">Nombre del cliente</p>
+    <input type="text" *ngIf="mostrar_formulario" class="form-control usuario_encontrado" [(ngModel)]="nombre_encontrado" disabled>
+    <div *ngIf="mostrar_alerta" class="alert alert-danger" role="alert">
+        No hemos encontrado un cliente con esa identificación
+    </div>
+    <form [formGroup]="PaymentForm" (ngSubmit)="addpay()" *ngIf="mostrar_formulario">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Forma de pago</label>
+            <select class="form-select" formControlName="tipo_pago" aria-label="Default select example">
+                <option value="1" selected>Efectivo</option>
+                <option value="2">Crédito</option>
+                <option value="3">Transferencia </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">fecha</label>
+            <input type="date" formControlName="fecha" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">descripcion</label>
+            <input type="text" formControlName="descripcion" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Soporte de pago</label>
+            <br><br>
+            <input type="file" class="file-input" (change)="onFileSelectEnunciado($event)" #fileUpload>
+        </div>
+        <button type="submit" class="btn-success login-cta" [disabled]="PaymentForm.invalid">Registrar</button>
+    </form>
+
+</div>
